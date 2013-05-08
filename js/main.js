@@ -14,12 +14,12 @@ window.addEventListener("DOMContentLoaded", function() {
     // Create Select Field Element and Populate with Options
     function makeBedrooms() {
         var formTag = document.getElementsByTagName("form"),
-            selectLi = $("select"),
+            selectLi = $("bedrooms"),
             makeSelect = document.createElement("select");
             makeSelect.setAttribute("id", "groups");
-        for(var i=0, j=contactGroups.length; i<j; i++){
+        for(var i=0, j=numberOfBedrooms.length; i<j; i++){
             var makeOption = document.createElement("option");
-            var optText = contactGroups[i];
+            var optText = numberOfBedrooms[i];
             makeOption.setAttribute("value", optText);
             makeOption.innerHTML = optText;
             makeSelect.appendChild(makeOption);
@@ -120,7 +120,7 @@ window.addEventListener("DOMContentLoaded", function() {
     
     
     // Var Defaults
-    var contactGroups = ["1", "2", "3"],
+    var numberOfBedrooms = ["1+", "2+", "3+"],
         checks
         ;
     makeBedrooms();
