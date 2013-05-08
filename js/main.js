@@ -55,6 +55,33 @@ window.addEventListener("DOMContentLoaded", function() {
          alert("Contact Saved");
                       
      }
+     
+     function getData() {
+         //Write local data from local storage to browser
+         var makeDiv = document.createElement("div");
+         makeDiv.setAttribute("id", "items");
+         var makeList = document.createElement("ul");
+         makeDiv.appendChild(makeList);
+         document.body.appendChild(makeDiv);
+         for (var i = 0, len=localStorage.length; i<len; i++) {
+             var makeLi = document.createElement("li");
+             makeList.appendChild(makeLi);
+             var key = localStorage.key(i);
+             var value = localStorage.getItem(key);
+             // Convert sting from local storage back to an object by using JSON.parse()
+             var obj = JSON.parse(value);
+             var makeSublist = document.createElement("ul");
+             makeLi.appendChild(makeSublist);
+             for (var n in obj) {
+                 var makeSubli =document.createElement("li");
+                 makeSublist.appendChild(makeSubli);
+                 var optSubText = obj[n][0]+" "+obj[n][1];
+                 makeSubli.innerHTML = optSubText;
+                 
+             }
+         }
+     
+     }
     
     
     // Var Defaults
@@ -67,9 +94,9 @@ window.addEventListener("DOMContentLoaded", function() {
     
     
     // Set Link and Submit Click Events
-/*    var displayData = $("displayData");
+    var displayData = $("displayData");
     displayData.addEventListener("click", getData);
-    var clearData = $("clearData");
+ /*   var clearData = $("clearData");
     clearData.addEventListener("click", clearData);
 */    var save = $("submit");
     save.addEventListener("click", storeData);
