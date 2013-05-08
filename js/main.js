@@ -26,6 +26,7 @@ window.addEventListener("DOMContentLoaded", function() {
         }
         selectLi.appendChild(makeSelect);
      }
+
      
      // Find value of selected checkbox
      /*
@@ -38,7 +39,27 @@ window.addEventListener("DOMContentLoaded", function() {
               }   
          }
      }
-     */
+    
+     function toggleControls(n) {
+         switch(n) {
+             case "on":
+                 $("contactForm").style.display = "none";
+                 $("clear").style.display = "inline";
+                 $("displayLink").style.display = "none";
+                 $("addNew").style.display = "inline";
+                 break;
+             case "off":
+                 $("contactForm").style.display = "none";
+                 $("clear").style.display = "inline";
+                 $("displayLink").style.display = "inline";
+                 $("addNew").style.display = "none";
+                 $("items").style.display = "none";
+                 break;
+             default:
+                 return false;
+         }
+     }
+      */
      function storeData() {
          var id         = Math.floor(Math.random()*10000001);
          // Get all form field values and store in object
@@ -57,12 +78,14 @@ window.addEventListener("DOMContentLoaded", function() {
      }
      
      function getData() {
+         //toggleControls("on");
          //Write local data from local storage to browser
          var makeDiv = document.createElement("div");
          makeDiv.setAttribute("id", "items");
          var makeList = document.createElement("ul");
          makeDiv.appendChild(makeList);
          document.body.appendChild(makeDiv);
+         //$("items").style.display = "block";
          for (var i = 0, len=localStorage.length; i<len; i++) {
              var makeLi = document.createElement("li");
              makeList.appendChild(makeLi);
@@ -82,6 +105,18 @@ window.addEventListener("DOMContentLoaded", function() {
          }
      
      }
+     
+     function clearLocal() {
+         if (localStorage.length === 0) {
+             alert("There is no data to clear")
+         } else {
+             localStorage.clear();
+             alert("All contacts are deleted!");
+             window.location.reload();
+             return false;
+         }
+     
+     }
     
     
     // Var Defaults
@@ -94,11 +129,11 @@ window.addEventListener("DOMContentLoaded", function() {
     
     
     // Set Link and Submit Click Events
-    var displayData = $("displayData");
+    var displayData = $("displayLink");
     displayData.addEventListener("click", getData);
- /*   var clearData = $("clearData");
-    clearData.addEventListener("click", clearData);
-*/    var save = $("submit");
+    var clearData = $("clear");
+    clearData.addEventListener("click", clearLocal);
+    var save = $("submit");
     save.addEventListener("click", storeData);
     
     
