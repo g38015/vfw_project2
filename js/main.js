@@ -61,19 +61,25 @@ window.addEventListener("DOMContentLoaded", function() {
      }
       */
      function storeData() {
-         var id         = Math.floor(Math.random()*10000001);
+         var id             = Math.floor(Math.random()*10000001);
          // Get all form field values and store in object
          // Object properties contain array form label and input value
          //getCheckbox()
-         var item       = {};
-             item.name = ["Group", $("name").value];
-             item.phone = ["First Name", $("phone").value];
-             item.email = ["Email", $("email").value];
-             //item.check = ["Checked", checks];
+         var lead           = {};
+             lead.name      = ["Name:", $("name").value];
+             lead.phone     = ["Phone:", $("phone").value];
+             lead.email     = ["Email:", $("email").value];
+             lead.date      = ["Date:", $("date").value];
+             lead.check     = ["Checked:", checks];
+             lead.price     = ["Price:", $("price").value];
+             lead.bedrooms  = ["Bedrooms:", $("bedrooms").value];
+             lead.info      = ["Info:", $("additional").value];
+             lead.hidden    = ["Hidden:", $("hideme").value];
+             
              
          // Save data to local storage Use stringify to convert object to a string
-         localStorage.setItem(id, JSON.stringify(item));
-         alert("Contact Saved");
+         localStorage.setItem(id, JSON.stringify(lead));
+         alert("Lead Has Been Saved!");
                       
      }
      
@@ -81,7 +87,7 @@ window.addEventListener("DOMContentLoaded", function() {
          //toggleControls("on");
          //Write local data from local storage to browser
          var makeDiv = document.createElement("div");
-         makeDiv.setAttribute("id", "items");
+         makeDiv.setAttribute("id", "leads");
          var makeList = document.createElement("ul");
          makeDiv.appendChild(makeList);
          document.body.appendChild(makeDiv);
@@ -108,10 +114,10 @@ window.addEventListener("DOMContentLoaded", function() {
      
      function clearLocal() {
          if (localStorage.length === 0) {
-             alert("There is no data to clear")
+             alert("There Are No Leads to Delete")
          } else {
              localStorage.clear();
-             alert("All contacts are deleted!");
+             alert("All Leads Have Been Deleted!");
              window.location.reload();
              return false;
          }
@@ -125,9 +131,7 @@ window.addEventListener("DOMContentLoaded", function() {
         ;
     makeBedrooms();
     
-    
-    
-    
+
     // Set Link and Submit Click Events
     var displayData = $("displayLink");
     displayData.addEventListener("click", getData);
@@ -135,8 +139,5 @@ window.addEventListener("DOMContentLoaded", function() {
     clearData.addEventListener("click", clearLocal);
     var save = $("submit");
     save.addEventListener("click", storeData);
-    
-    
-    
 
 });
