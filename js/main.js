@@ -86,30 +86,33 @@ window.addEventListener("DOMContentLoaded", function() {
      function getData() {
          //toggleControls("on");
          //Write local data from local storage to browser
-         var makeDiv = document.createElement("div");
-         makeDiv.setAttribute("id", "leads");
-         var makeList = document.createElement("ul");
-         makeDiv.appendChild(makeList);
-         document.body.appendChild(makeDiv);
-         //$("items").style.display = "block";
-         for (var i = 0, len=localStorage.length; i<len; i++) {
-             var makeLi = document.createElement("li");
-             makeList.appendChild(makeLi);
-             var key = localStorage.key(i);
-             var value = localStorage.getItem(key);
-             // Convert sting from local storage back to an object by using JSON.parse()
-             var obj = JSON.parse(value);
-             var makeSublist = document.createElement("ul");
-             makeLi.appendChild(makeSublist);
-             for (var n in obj) {
-                 var makeSubli =document.createElement("li");
-                 makeSublist.appendChild(makeSubli);
-                 var optSubText = obj[n][0]+" "+obj[n][1];
-                 makeSubli.innerHTML = optSubText;
-                 
-             }
-         }
-     
+         if (localStorage.length === 0) {
+             alert("You Have No Leads, Please Enter One Now")
+             } else {
+                 var makeDiv = document.createElement("div");
+                 makeDiv.setAttribute("id", "leads");
+                 var makeList = document.createElement("ul");
+                 makeDiv.appendChild(makeList);
+                 document.body.appendChild(makeDiv);
+                 //$("items").style.display = "block";
+                 for (var i = 0, len=localStorage.length; i<len; i++) {
+                     var makeLi = document.createElement("li");
+                     makeList.appendChild(makeLi);
+                     var key = localStorage.key(i);
+                     var value = localStorage.getItem(key);
+                     // Convert sting from local storage back to an object by using JSON.parse()
+                     var obj = JSON.parse(value);
+                     var makeSublist = document.createElement("ul");
+                     makeLi.appendChild(makeSublist);
+                     for (var n in obj) {
+                         var makeSubli =document.createElement("li");
+                         makeSublist.appendChild(makeSubli);
+                         var optSubText = obj[n][0]+" "+obj[n][1];
+                         makeSubli.innerHTML = optSubText;
+                         
+                     }
+                 }
+         } 
      }
      
      function clearLocal() {
@@ -121,7 +124,6 @@ window.addEventListener("DOMContentLoaded", function() {
              window.location.reload();
              return false;
          }
-     
      }
     
     
