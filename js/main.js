@@ -14,9 +14,9 @@ window.addEventListener("DOMContentLoaded", function() {
     // Create Select Field Element and Populate with Options
     function makeBedrooms() {
         var formTag = document.getElementsByTagName("form"),
-            selectLi = $("bedrooms"),
+            selectLi = $("bed"),
             makeSelect = document.createElement("select");
-            makeSelect.setAttribute("id", "groups");
+            makeSelect.setAttribute("id", "bedrooms");
         for(var i=0, j=numberOfBedrooms.length; i<j; i++){
             var makeOption = document.createElement("option");
             var optText = numberOfBedrooms[i];
@@ -33,13 +33,13 @@ window.addEventListener("DOMContentLoaded", function() {
      function getCheckbox() {
          var checks = document.forms[0].sfr;
          for (var i = 0; i < checks.length; i++) {
-             if(checks[i].checked {
+             if(checks[i].checked) {
              sfrValue = checks[i].value;
              
               }   
          }
      }
-    
+     */   
      function toggleControls(n) {
          switch(n) {
              case "on":
@@ -49,17 +49,17 @@ window.addEventListener("DOMContentLoaded", function() {
                  $("addNew").style.display = "inline";
                  break;
              case "off":
-                 $("contactForm").style.display = "none";
+                 $("contactForm").style.display = "block";
                  $("clear").style.display = "inline";
                  $("displayLink").style.display = "inline";
                  $("addNew").style.display = "none";
-                 $("items").style.display = "none";
+                 $("leads").style.display = "none";
                  break;
              default:
                  return false;
          }
      }
-      */
+     
      function storeData() {
          var id             = Math.floor(Math.random()*10000001);
          // Get all form field values and store in object
@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded", function() {
              lead.phone     = ["Phone:", $("phone").value];
              lead.email     = ["Email:", $("email").value];
              lead.date      = ["Date:", $("date").value];
-             lead.check     = ["Checked:", checks];
+             lead.check     = ["Checked:", sfrValue];
              lead.price     = ["Price:", $("price").value];
              lead.bedrooms  = ["Bedrooms:", $("bedrooms").value];
              lead.info      = ["Info:", $("additional").value];
@@ -84,17 +84,17 @@ window.addEventListener("DOMContentLoaded", function() {
      }
      
      function getData() {
-         //toggleControls("on");
-         //Write local data from local storage to browser
          if (localStorage.length === 0) {
              alert("You Have No Leads, Please Enter One Now")
              } else {
+                toggleControls("on");
+                 //Write local data from local storage to browser
                  var makeDiv = document.createElement("div");
                  makeDiv.setAttribute("id", "leads");
                  var makeList = document.createElement("ul");
                  makeDiv.appendChild(makeList);
                  document.body.appendChild(makeDiv);
-                 //$("items").style.display = "block";
+                 $("leads").style.display = "block";
                  for (var i = 0, len=localStorage.length; i<len; i++) {
                      var makeLi = document.createElement("li");
                      makeList.appendChild(makeLi);
@@ -112,7 +112,7 @@ window.addEventListener("DOMContentLoaded", function() {
                          
                      }
                  }
-         } 
+             } 
      }
      
      function clearLocal() {
@@ -129,7 +129,7 @@ window.addEventListener("DOMContentLoaded", function() {
     
     // Var Defaults
     var numberOfBedrooms = ["1+", "2+", "3+"],
-        checks
+        sfrValue
         ;
     makeBedrooms();
     
