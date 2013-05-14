@@ -9,8 +9,7 @@ body {
     margin: 0;
     padding: 0;
     font: 14px/16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-    background-image: #d4d6d0;
-    background-image: -webkit-linear-gradient(bottom, #eeeeec 0%, #d3d7cf 50%, #babdb6 100%);
+    background-color: #b5b6b4;
     }
 
 h1 {
@@ -25,13 +24,23 @@ h1 {
     background-image: #426fa9;
     background-image: -webkit-linear-gradient(top, #729fcf 0%, #3465a4 50%, #204a87 100%);
     display: block;
-    overflow: auto;
    
 }
-
+/*
 nav {
+    
+    
+}
 
-    text-align:left;
+a {
+    font-family: "Funkydori";
+    text-decoration: none;
+}
+*/
+
+p {
+    margin: 50px;
+    font-size: 16px;
 }
 
 fieldset {
@@ -42,7 +51,7 @@ legend {
    color: #3465a4;
    text-shadow: 0 1px 0 #204a87;
    margin: 0px;
-   padding: 10px 0;
+   padding: 20px 0px;
    font: 22px "Funkydori";
 }
 
@@ -51,9 +60,34 @@ input {
     -webkit-border-radius: 5px;
     
     }
+    
+input[type='checkbox'] {
+    display: inline;
+}
+
 
 li {
     list-style: none;
+    font-family: "Funkydori";
+    font-size: 18px;
+    
+}
+
+#property {
+    padding: 20px;
+}
+
+#priceRange {
+    padding: 20px;
+}
+
+#numBed {
+    padding: 20px;
+}
+
+label {
+    font-family: "Funkydori";
+    font-size: 18px;
 }
 
 textarea {
@@ -63,15 +97,56 @@ textarea {
 
 #submit {
     color: #d8d8d8;
-    font-family: "Funkydori";
-    font-size: 16px;
     text-shadow: 0 2px 0 #323232;
-    margin: 5px;    
     text-align: center;
     background-image: #426fa9;
     background-image: -webkit-linear-gradient(top, #729fcf 0%, #3465a4 50%, #204a87 100%);
     -webkit-border-radius: 5px;
-   float: right;
+   float: left;
+   font: 18px "Funkydori";
+   top: 25px;
+ 
+}
+
+
+#clear {
+    font-family: "Funkydori";
+    text-decoration: none;
+    }
+
+#displayLink {
+    float: right;
+    font-family: "Funkydori";
+    text-decoration: none;
+}
+
+#addNew {
+    float: right;
+    font-family: "Funkydori";
+    text-decoration: none;
+    
+}
+
+#newLead {
+    color: #d8d8d8;
+    text-shadow: 0 2px 0 #323232;
+    margin: 5px;    
+     text-align: center;
+     background-image: -webkit-linear-gradient(top, #729fcf 0%, #3465a4 50%, #204a87 100%);
+     -webkit-border-radius: 5px;
+    text-decoration: none;
+    font: 22px "Funkydori";
+    padding: 5px;
+    left: 55px;
+    position: absolute;
+    
+}
+
+#price {
+    width: 150px;
+}
+
+#slideval {
     
 }
 

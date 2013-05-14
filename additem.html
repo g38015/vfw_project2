@@ -25,29 +25,29 @@
 	        <fieldset>
 	            <legend>Lead Info</legend>
 	            <ul>
-            	    <li><label for="name">Name:</label><input type="text" id="name" placeholder="Name" /></li>
-            	    <li><label for="phone">Phone:</label><input type="tel" id="phone" placeholder="555-1212" /></li>
-            	    <li><label for="email">Email:</label><input type="email" id="email" placeholder="email@email.com" /></li>
-            	    <li><label for="date">Date:</label><input type="date" id="date" /></li>
+            	    <li><label for="name">Name:</label><input type="text" id="name" placeholder="Name" size="30" /></li>
+            	    <li><label for="phone">Phone:</label><input type="tel" id="phone" placeholder="555-1212" size="30" /></li>
+            	    <li><label for="email">Email:</label><input type="email" id="email" placeholder="email@email.com" size="30" /></li>
+            	    <li><label for="date">Date:</label><input type="date" id="date" size="30" /></li>
         	    </ul>
     	    </fieldset>    
     	    <fieldset>
     	        <legend>Property Info</legend>
     	        <ul>
-    	            <li>Property Type
-    	                <ul>    
+    	            <li>Property Type:
+    	                <ul id="property">    
             	            <li><input type="checkbox" checked value="Sfr" id="sfr" name="sfr" /><label for="sfr">Single Family</label></li>
             	            <li><input type="checkbox" value="Townhome" id="townhome" /><label for="townhome">Townhome</label></li>
             	            <li><input type="checkbox" value="Condo" id="condo" /><label for="condo">Condo</label></li>
     	                </ul> 
     	            </li>
-    	            <li>Price Range
-    	                <ul>
-    	                    <li><input type="range" id="price" min="25000" max="250000" step="10000" value="100000" /></li>
+    	            <li>Price Range:
+    	                <ul id="priceRange">
+    	                    <li><input type="range" id="price" min="25000" max="250000" step="10000" onchange="slideValue(this.value)" /><span id="slideval">0</span></li>
     	                </ul>
     	            </li>
-    	            <li>Bedrooms
-    	                <ul>
+    	            <li>Bedrooms:
+    	                <ul id="numBed">
     	                <li id="bed"></li>
     	                    <!-- <li>
         	                    <select id="bedrooms">
@@ -58,7 +58,7 @@
     	                    </li> -->
     	                </ul>
     	            </li>
-    	            <li><label for="additional">Additional Info</label><textarea id="additional"></textarea></li>
+    	            <li><label for="additional">Additional Info:</label><textarea id="additional" placeholder="Additional Info" cols="20"></textarea></li>
     	            <li id="hideme"><input type="hidden" id="hide" /></li>
     	        </ul>
     	    </fieldset>

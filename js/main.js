@@ -143,3 +143,10 @@ window.addEventListener("DOMContentLoaded", function() {
     save.addEventListener("click", storeData);
 
 });
+
+
+function slideValue(slider) {
+     var slideval = document.getElementById("slideval");
+     slideval.innerHTML = slider;
+
+};
