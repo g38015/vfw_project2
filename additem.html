@@ -14,7 +14,9 @@
 	</head>
 	<!-- Body -->
 	<body>
-	    <header><h1>New Lead</h1></header>
+	    <header>
+	        <h1>Lead Information</h1>
+	    </header>
 	    <nav>
 	        <ul>
 	            <li><a href="#" id="clear">Delete Leads</a></li>
@@ -22,8 +24,9 @@
                 <li><a href="additem.html" id="addNew" style="display:none;">Add New</a></li>
             </ul>
 	    </nav>
+	    <div>
 	    <!-- Form -->
-	    <form action="#" method="post" id="contactForm">
+	    <form action="#" method="post" id="contactForm" name="leadForm">
 	        <fieldset>
 	            <legend>Lead Info</legend>
 	            <ul>
@@ -38,17 +41,17 @@
     	        <ul>
     	            <li>Property Type:
     	                <ul id="property">    
-            	            <li><input type="checkbox" checked value="Sfr" id="sfr" name="sfr" /><label for="sfr">Single Family</label></li>
-            	            <li><input type="checkbox" value="Townhome" id="townhome" /><label for="townhome">Townhome</label></li>
-            	            <li><input type="checkbox" value="Condo" id="condo" /><label for="condo">Condo</label></li>
+            	            <li><input type="checkbox" checked value="Sfr" id="sfr" name="type" /><label for="sfr">Single Family</label></li>
+            	            <li><input type="checkbox" value="Townhome" id="townhome" name="type" /><label for="townhome">Townhome</label></li>
+            	            <li><input type="checkbox" value="Condo" id="condo" name="type" /><label for="condo">Condo</label></li>
     	                </ul> 
     	            </li>
     	            <li>Price Range:
     	                <ul id="priceRange">
-    	                    <li><input type="range" id="price" min="25000" max="250000" step="10000" onchange="slideValue(this.value)" /><span id="slideval">0</span></li>
+    	                    <li><input type="range" id="price" min="50000" max="500000" step="10000" onchange="slideNumber(this.value)" /><span id="slidevalue">0</span></li>
     	                </ul>
     	            </li>
-    	            <li>Bedrooms:
+    	            <li>Min Bedrooms:
     	                <ul id="numBed">
     	                <li id="bed"></li>
     	                    <!-- <li>
@@ -66,9 +69,11 @@
     	                    <li id="hideme"><input type="hidden" id="hide" /></li>
     	                </ul>
     	            </li>
+    	        </ul>
     	    </fieldset>
     	    <input type="button" name="newLead" value="New Lead!" id="submit" />   
 	    </form>
+	    </div>
 	    <script src="js/main.js" type="text/javascript"></script>
 	</body>
 </html>

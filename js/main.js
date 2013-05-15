@@ -7,40 +7,39 @@ window.addEventListener("DOMContentLoaded", function() {
 
     // getElementsById Function
     function $(x) {
-        var theElement = document.getElementById(x);
-        return theElement;
+        var getElement = document.getElementById(x);
+        return getElement;
     }
     
-    // Create Select Field Element and Populate with Options
+    // Function creates a select Field Element and Populates with Options
     function makeBedrooms() {
         var formTag = document.getElementsByTagName("form"),
-            selectLi = $("bed"),
-            makeSelect = document.createElement("select");
-            makeSelect.setAttribute("id", "bedrooms");
+            createSelectLi = $("bed"),
+            createSelect = document.createElement("select");
+            createSelect.setAttribute("id", "bedrooms");
         for(var i=0, j=numberOfBedrooms.length; i<j; i++){
-            var makeOption = document.createElement("option");
-            var optText = numberOfBedrooms[i];
-            makeOption.setAttribute("value", optText);
-            makeOption.innerHTML = optText;
-            makeSelect.appendChild(makeOption);
+            var createOption = document.createElement("option");
+            var optionText = numberOfBedrooms[i];
+            createOption.setAttribute("value", optionText);
+            createOption.innerHTML = optionText;
+            createSelect.appendChild(createOption);
         }
-        selectLi.appendChild(makeSelect);
+        createSelectLi.appendChild(createSelect);
      }
 
      
-     // Find value of selected checkbox
-     /*
+     // Find value of selected checkbox (this function has issue of retuning all values it loops through only returns one value
      function getCheckbox() {
-         var checks = document.forms[0].sfr;
-         for (var i = 0; i < checks.length; i++) {
+         var checks = document.forms[0].type;
+         for (var i = 0; i < document.leadForm.type.length; i++) {
              if(checks[i].checked) {
-             sfrValue = checks[i].value;
+             propertyChecked = checks[i].value;
              
               }   
          }
      }
-     */   
-     function toggleControls(n) {
+     // Function toggles form, hides form once show leads is tapped or clicked.
+     function toggleLeads(n) {
          switch(n) {
              case "on":
                  $("contactForm").style.display = "none";
@@ -60,17 +59,18 @@ window.addEventListener("DOMContentLoaded", function() {
          }
      }
      
-     function storeData() {
+     // This function stores leads into local storage
+     function storeLeads() {
          var id             = Math.floor(Math.random()*10000001);
          // Get all form field values and store in object
          // Object properties contain array form label and input value
-         //getCheckbox()
+         getCheckbox();
          var lead           = {};
              lead.name      = ["Name:", $("name").value];
              lead.phone     = ["Phone:", $("phone").value];
              lead.email     = ["Email:", $("email").value];
              lead.date      = ["Date:", $("date").value];
-             lead.check     = ["Checked:", sfrValue];
+             lead.check     = ["Checked:", propertyChecked];
              lead.price     = ["Price:", $("price").value];
              lead.bedrooms  = ["Bedrooms:", $("bedrooms").value];
              lead.info      = ["Info:", $("additional").value];
@@ -82,31 +82,31 @@ window.addEventListener("DOMContentLoaded", function() {
          alert("Lead Has Been Saved!");
                       
      }
-     
-     function getData() {
+     // This function gets the leads from localstorage and shows them
+     function getLeads() {
          if (localStorage.length === 0) {
-             alert("You Have No Leads, Please Enter One Now")
+             alert("You Have No Leads, Please Enter One Now");
              } else {
-                toggleControls("on");
+                toggleLeads("on");
                  //Write local data from local storage to browser
-                 var makeDiv = document.createElement("div");
-                 makeDiv.setAttribute("id", "leads");
-                 var makeList = document.createElement("ul");
-                 makeDiv.appendChild(makeList);
-                 document.body.appendChild(makeDiv);
+                 var createDiv = document.createElement("div");
+                 createDiv.setAttribute("id", "leads");
+                 var newList = document.createElement("ul");
+                 createDiv.appendChild(newList);
+                 document.body.appendChild(createDiv);
                  $("leads").style.display = "block";
                  for (var i = 0, len=localStorage.length; i<len; i++) {
-                     var makeLi = document.createElement("li");
-                     makeList.appendChild(makeLi);
+                     var newLi = document.createElement("li");
+                     newList.appendChild(newLi);
                      var key = localStorage.key(i);
                      var value = localStorage.getItem(key);
                      // Convert sting from local storage back to an object by using JSON.parse()
                      var obj = JSON.parse(value);
-                     var makeSublist = document.createElement("ul");
-                     makeLi.appendChild(makeSublist);
+                     var newSublist = document.createElement("ul");
+                     newLi.appendChild(newSublist);
                      for (var n in obj) {
                          var makeSubli =document.createElement("li");
-                         makeSublist.appendChild(makeSubli);
+                         newSublist.appendChild(makeSubli);
                          var optSubText = obj[n][0]+" "+obj[n][1];
                          makeSubli.innerHTML = optSubText;
                          
@@ -114,10 +114,10 @@ window.addEventListener("DOMContentLoaded", function() {
                  }
              } 
      }
-     
-     function clearLocal() {
+     // This function clears all localstorage when delete leads is clicked or tapped
+     function clearLeads() {
          if (localStorage.length === 0) {
-             alert("There Are No Leads to Delete")
+             alert("There Are No Leads to Delete");
          } else {
              localStorage.clear();
              alert("All Leads Have Been Deleted!");
@@ -129,24 +129,24 @@ window.addEventListener("DOMContentLoaded", function() {
     
     // Var Defaults
     var numberOfBedrooms = ["1+", "2+", "3+"],
-        sfrValue
+        propertyChecked
         ;
     makeBedrooms();
     
 
     // Set Link and Submit Click Events
-    var displayData = $("displayLink");
-    displayData.addEventListener("click", getData);
-    var clearData = $("clear");
-    clearData.addEventListener("click", clearLocal);
+    var display = $("displayLink");
+    display.addEventListener("click", getLeads);
+    var clear = $("clear");
+    clear.addEventListener("click", clearLeads);
     var save = $("submit");
-    save.addEventListener("click", storeData);
+    save.addEventListener("click", storeLeads);
 
 });
 
-
-function slideValue(slider) {
-     var slideval = document.getElementById("slideval");
-     slideval.innerHTML = "$" + slider;
+// Function for slider to show the value in the range to a user while sliding
+function slideNumber(slider) {
+     var slidevalue = document.getElementById("slidevalue");
+     slidevalue.innerHTML = "$50000 to " + "$" + slider;
 
 };
