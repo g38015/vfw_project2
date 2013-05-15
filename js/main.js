@@ -147,6 +147,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
 function slideValue(slider) {
      var slideval = document.getElementById("slideval");
-     slideval.innerHTML = slider;
+     slideval.innerHTML = "$" + slider;
 
 };

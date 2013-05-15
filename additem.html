@@ -16,9 +16,11 @@
 	<body>
 	    <header><h1>New Lead</h1></header>
 	    <nav>
-	    <a href="#" id="clear">Delete Leads</a>
-	    <a href="#" id="displayLink">Show Leads</a>
-        <a href="additem.html" id="addNew" style="display:none;">Add New</a>
+	        <ul>
+	            <li><a href="#" id="clear">Delete Leads</a></li>
+	            <li><a href="#" id="displayLink">Show Leads</a></li>
+                <li><a href="additem.html" id="addNew" style="display:none;">Add New</a></li>
+            </ul>
 	    </nav>
 	    <!-- Form -->
 	    <form action="#" method="post" id="contactForm">
@@ -58,9 +60,12 @@
     	                    </li> -->
     	                </ul>
     	            </li>
-    	            <li><label for="additional">Additional Info:</label><textarea id="additional" placeholder="Additional Info" cols="20"></textarea></li>
-    	            <li id="hideme"><input type="hidden" id="hide" /></li>
-    	        </ul>
+    	            <li>Additional Info:
+    	                <ul id="textArea">
+    	                    <li><textarea id="additional" placeholder="Additional Info" cols="20"></textarea></li>
+    	                    <li id="hideme"><input type="hidden" id="hide" /></li>
+    	                </ul>
+    	            </li>
     	    </fieldset>
     	    <input type="button" name="newLead" value="New Lead!" id="submit" />   
 	    </form>
