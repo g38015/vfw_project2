@@ -13,19 +13,19 @@ window.addEventListener("DOMContentLoaded", function() {
     
     // Function creates a select Field Element and Populates with Options
     function makeBedrooms() {
-        var formTag = document.getElementsByTagName("form"),
-            createSelectLi = $("bed"),
-            createSelect = document.createElement("select");
-            createSelect.setAttribute("id", "bedrooms");
-        for(var i=0, j=numberOfBedrooms.length; i<j; i++){
-            var createOption = document.createElement("option");
-            var optionText = numberOfBedrooms[i];
-            createOption.setAttribute("value", optionText);
-            createOption.innerHTML = optionText;
-            createSelect.appendChild(createOption);
-        }
-        createSelectLi.appendChild(createSelect);
-     }
+        var formTag = document.getElementsByTagName("form"), // Target Form Tag
+            createSelectLi = $("bed"), // Finds Element Called bed, targets in HTML
+            createSelect = document.createElement("select"); // Creates Select Element
+            createSelect.setAttribute("id", "bedrooms"); // Sets Attribute id="bedrooms"
+        for(var i=0, j=numberOfBedrooms.length; i<j; i++){ // Populates Select Tage with Array numberOfBedrooms
+            var createOption = document.createElement("option"); // Creates Option Element
+            var optionText = numberOfBedrooms[i]; // Creates Option Text, Grabs Value in Array
+            createOption.setAttribute("value", optionText); // Sets Attribute value="optionText" (values in the array)
+            createOption.innerHTML = optionText; // Sets the Text from Array in the Option Tag
+            createSelect.appendChild(createOption); // Attaches Option Tags to Select Tag
+        } // Loops through the array and sets all option tags
+        createSelectLi.appendChild(createSelect); // Attaches Select Tag and Option Tags to Document
+     } // Need to Call Function 
 
      
      // Find value of selected checkbox (this function has issue of retuning all values it loops through only returns one value

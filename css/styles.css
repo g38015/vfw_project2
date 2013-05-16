@@ -36,7 +36,8 @@ p {
 }
 
 fieldset {
-    border: 0;
+    border-color: #729fcf ;
+    border-width: 2px;
 }
 
 legend {
@@ -165,5 +166,18 @@ textarea {
     width: 150px;
 }
 
+#leads ul {
+    padding: 10px;
+    margin-bottom: 10px;
+}
 
+#leads li {
+    padding: 3px;
+}
+
+#leads ul li ul {
+    padding: 5px;
+    border: 3px solid #729fcf;
+    box-shadow: 0px 3px 5px #444;;
+}
 
